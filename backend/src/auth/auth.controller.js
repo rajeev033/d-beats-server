@@ -1,16 +1,22 @@
-const { loginUser } = require("./auth.service");
+const authService = require("./auth.service");
+
+const register = async (req, res) => {
+  try {
+    const { walletAddress } = req.body;
+    const user = await authService.registerUser(walletAddress);
+    res.status(201).json(user);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
 
 const login = async (req, res) => {
   try {
     const { walletAddress } = req.body;
-    const user = await loginUser(walletAddress);
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-    const token = generateJWT(user);
-    res.status(200).json({ token });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
+    const token = await authService.loginUser(walletAddress);
+    res.json({ token });
+  } catch (err) {
+    res.status(401).json({ error: err.message });
   }
 };
 
