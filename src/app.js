@@ -31,7 +31,7 @@ export const marketplaceContract = new ethers.Contract(
  provider
 );
 
-app.use("/api", routes);
+app.use("/", routes);
 
 const PORT = process.env.PORT || 5000;
 
