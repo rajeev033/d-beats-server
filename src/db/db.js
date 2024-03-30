@@ -1,8 +1,9 @@
 // import WeaveDB from "weavedb-sdk";
 import WeaveDB from "weavedb-sdk-node"
+import dotenv from "dotenv";
 
 //Initialize WeaveDB
-const db = new WeaveDB({ contractTxId: "xI5zun1g6UnftxGdwo6ZOy5CXZkpkKMd4Jb6zhf0RHk" });
+const db = new WeaveDB({ contractTxId: process.env.CONTRACT_TX_ID });
 await db.init();
 
 export default db;

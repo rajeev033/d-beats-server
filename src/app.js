@@ -1,4 +1,5 @@
 import express from "express";
+import "dotenv/config";
 import cors from "cors";
 import routes from "./routes.js";
 import { ethers } from "ethers";
@@ -14,7 +15,7 @@ const factoryAddress = "0x242309090561301ff7A27a1d675f2c0dA06845FD";
 const marketplaceAddress = "0x4690C5d846Abb49d0b6B2a04D4aa3B16e4aFC287";
 
 const provider = new ethers.providers.WebSocketProvider(
- `wss://arb-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_ARB_SEPOLIA_KEY}`
+ `wss://arb-sepolia.g.alchemy.com/v2/${process.env.REACT_APP_ALCHEMY_ARB_SEPOLIA_KEY}`
 );
 
 // Use ES module syntax for exporting
