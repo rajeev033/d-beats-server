@@ -1,5 +1,6 @@
 import db from "../db/db.js";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 
 class AuthService {
   async registerUser(walletAddress) {
