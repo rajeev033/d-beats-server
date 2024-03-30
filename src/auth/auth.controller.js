@@ -1,4 +1,4 @@
-const authService = require("./auth.service");
+import authService from "./auth.service.js";
 
 const register = async (req, res) => {
   try {
