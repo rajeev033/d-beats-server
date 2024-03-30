@@ -1,12 +1,11 @@
-const express = require("express");
-const ethers = require("ethers");
-const cors = require("cors");
-const factoryAbi = require("./abi/factoryAbi.json");
-const marketplaceAbi = require("./abi/marketplaceAbi.json");
-const routes = require("./routes");
+import express from "express";
+import cors from "cors";
+import routes from "./routes.js";
+import { ethers } from "ethers";
+import factoryAbi from "./abi/factoryAbi.json" assert { type: "json" };
+import marketplaceAbi from "./abi/marketplaceAbi.json" assert { type: "json" };
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 app.use(routes);
@@ -18,13 +17,13 @@ const provider = new ethers.providers.WebSocketProvider(
   `wss://arb-sepolia.g.alchemy.com/v2/${process.env.ALCHEMY_ARB_SEPOLIA_KEY}`
 );
 
-export const factoryContract = new ethers.Contract(
+module.exports.factoryContract = new ethers.Contract(
   factoryAddress,
   factoryAbi,
   provider
 );
 
-export const marketplaceContract = new ethers.Contract(
+module.exports.factoryContract = new ethers.Contract(
   marketplaceAddress,
   marketplaceAbi,
   provider

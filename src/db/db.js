@@ -4,4 +4,4 @@ import WeaveDB from "weavedb-sdk";
 const db = new WeaveDB({ contractTxId: process.env.CONTRACT_TX_ID });
 await db.init();
 
-module.exports = db;
+export default db;
